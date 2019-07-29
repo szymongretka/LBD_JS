@@ -7,6 +7,13 @@
     text-align: right;
 }
 
+ul{
+    font-size:75%;
+    list-style:none;
+    padding-left:20px;
+    padding-right:5px;
+}
+
 .weekday-header {
     background-color: #999;
     border-color: #ddd;
