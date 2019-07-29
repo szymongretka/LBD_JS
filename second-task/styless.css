@@ -1,0 +1,68 @@
+.month-header {
+    background-image: url(./jason-leung-479251-unsplash.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    text-align: right;
+}
+
+.weekday-header {
+    background-color: #999;
+    border-color: #ddd;
+    border-style: solid;
+    letter-spacing: 1px;
+    line-height: 25px;
+}
+
+.week {
+    background-color: #eaeaea;
+    height: 75px;
+    margin: 0;
+    text-align: left;
+    vertical-align: top;
+}
+
+.off-day {
+    background-color: #ddd;
+}
+
+.event.classes {
+    border-radius: 5px;
+    color: #10171C;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #A6F4FF;
+}
+
+.event.school {
+    border-radius: 5px;
+    color: #10171C;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #BA9CE8;
+}
+
+.event.appointment {
+    border-radius: 5px;
+    color: #10171C;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #FF7E6D;
+}
+
+.event.birthday {
+    border-radius: 5px;
+    color: #10171C;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #AFFFAD;
+}
+
+.event.job {
+    border-radius: 5px;
+    color: #10171C;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #E8E193;
+}
