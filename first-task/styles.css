@@ -1,0 +1,16 @@
+h2 {    
+    font-size: 12pt;
+    color: #000099;
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+.custom {
+    background-color: black;
+    color: white;
+    margin: 20px;
+    padding: 20px;
+}
+img{
+    max-width: 20%;
+    max-height: 20%;
+}
