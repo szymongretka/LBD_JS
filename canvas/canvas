@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+</head>
+<body>
+<canvas id="draw" width="800" height="800"></canvas>
+<script>
+
+//https://kursjs.pl/kurs/canvas/canvas-paint.php
+
+//CREATE paint like canvas
+
+//add reference to canvas
+const canvas = document.querySelector('#draw');
+const ctx = canvas.getContext('2d');
+
+
+//set canvas width and height to window height and width
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+
+//set stroke style
+ctx.strokeStyle = "#FF0000";
+//set line properties
+ctx.lineCap = "round";    //Sets or returns the style of the end caps for a line
+ctx.lineJoin = "round";    //Sets or returns the type of corner created, when two lines meet
+
+//create variables for 
+var isDrawing = false //boolean
+var lastX = 0
+var lastY = 0
+var direction = true; //boolean
+var hue = 0;
+var osc = 0.1;
+
+function stopDrawing(){
+    isDrawing = false;
+}
+function startDrawing(e){
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+}
+
+function drawLine(e){
+//return from function if drawing state is false
+   if(!isDrawing){
+        return false;
+    }
+    //set stroke color
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+
+  ctx.beginPath();
+
+  // start from
+   ctx.moveTo(lastX, lastY);
+  // go to
+   ctx.lineTo(e.offsetX, e.offsetY);
+
+  ctx.stroke();
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+    
+
+  //increment hue
+  hue++;
+  //if hue crosses 360 threshold, reset it to 0
+  if(hue > 360){
+      hue = 0;
+  }
+  
+  
+  //add params to make draw stroke increase in size in oscilating way
+  if(osc >= 1 || osc <= 0){
+      direction = !direction;
+  }
+  if(direction == true){
+      osc += 0.01;
+  } else {
+      osc -= 0.01;
+  }
+  ctx.lineWidth = 300*(Math.sin(osc));
+
+}
+
+//add mousedown event listener on canvas, function has argument event - e (hint check offsets properties)
+canvas.addEventListener('mousedown', startDrawing);
+ 
+//[lastX, lastY] = [e.offsetX, e.offsetY];
+
+//add mousemove event listener that will call draw function
+canvas.addEventListener('mousemove', drawLine);
+
+//add mouseup listener - stop draw state
+canvas.addEventListener('mouseup', stopDrawing);
+
+//add mouseout listener - start draw state
+canvas.addEventListener('mouseout', stopDrawing);
+
+</script>
+
+<style>
+  html, body {
+    margin: 0;
+  }
+</style>
+
+</body>
+</html>
